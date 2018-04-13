@@ -1,4 +1,4 @@
-# HotPads Webpack Configuration Project
+# Webpack Configuration Project
 
 This is a small front-end development coding project that includes a webpack configuration written from scratch.
 
