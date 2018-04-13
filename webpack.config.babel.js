@@ -28,8 +28,8 @@ const config = {
         use: ['style-loader!css-loader!sass-loader?modules&localIdentName=[name]---[local]---[hash]']
       },
       {
-        test: /\.(jpe?g|png|gif)$/i,
-        loader: 'file-loader?name=/public/images/[name].[ext]'
+        test: /\.(jp(e*)g|png|gif)$/i,
+        loader: 'file-loader?name=/[name].[ext]'
       },
       {
         test: /\.svg?$/,
@@ -38,7 +38,7 @@ const config = {
             loader: 'url-loader',
             options: {
               limit: 1000000,
-              fallback: 'file-loader?name=/public/images/[name].[ext]'
+              fallback: 'file-loader?name=/[name].[ext]'
             }
           }
         ]
