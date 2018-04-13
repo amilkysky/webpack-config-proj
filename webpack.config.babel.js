@@ -35,10 +35,10 @@ const config = {
         test: /\.svg?$/,
         use: [
           {          
-            loader: 'svg-url-loader',
+            loader: 'url-loader',
             options: {
               limit: 1000000,
-              name: 'images/[name].[ext]'
+              fallback: 'file-loader?name=/public/images/[name].[ext]'
             }
           }
         ]
