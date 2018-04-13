@@ -31,6 +31,18 @@ const config = {
         test: /\.(jpe?g|png|gif)$/i,
         loader: 'file-loader?name=/public/images/[name].[ext]'
       },
+      {
+        test: /\.svg?$/,
+        use: [
+          {          
+            loader: 'svg-url-loader',
+            options: {
+              limit: 1000000,
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
+      }
     ]
   }
 }
