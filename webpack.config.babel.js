@@ -6,22 +6,32 @@ const config = {
   entry: './app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[hash].bundle.js'
   },
   module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      include: path.resolve(__dirname, 'src'),
-      exclude: /node_modules/,
-      use: [{
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ['es2015', { modules: false }]
-          ]
-        }
-      }]
-    }]
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['react', 'es2015']
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss?$/,
+        use: ['style-loader!css-loader!sass-loader?modules&localIdentName=[name]---[local]---[hash]']
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        loader: 'file-loader?name=/public/images/[name].[ext]'
+      },
+    ]
   }
 }
 
