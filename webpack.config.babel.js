@@ -29,7 +29,14 @@ const config = {
       },
       {
         test: /\.(jp(e*)g|png|gif)$/i,
-        loader: 'file-loader?name=/[name].[ext]'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.svg?$/,
@@ -38,7 +45,7 @@ const config = {
             loader: 'url-loader',
             options: {
               limit: 1000000,
-              fallback: 'file-loader?name=/[name].[ext]'
+              fallback: 'file-loader?name=/[path][name].[ext]'
             }
           }
         ]
